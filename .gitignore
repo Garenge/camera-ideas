@@ -1,0 +1,13 @@
+.DS_Store
+
+# Web
+web/node_modules/
+web/package-lock.json
+
+# Flutter
+flutter/.dart_tool/
+flutter/.flutter-plugins
+flutter/.flutter-plugins-dependencies
+flutter/build/
+flutter/ios/Pods/
+flutter/pubspec.lock
