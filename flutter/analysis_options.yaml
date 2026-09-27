@@ -1,0 +1,8 @@
+# Flutter 静态分析配置
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    avoid_print: false  # 原型阶段允许 print 调试

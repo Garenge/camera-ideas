@@ -1,0 +1,38 @@
+name: camera_ideas_flutter
+description: 摄像头延伸开发 - Flutter 跨平台原型
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # 摄像头
+  camera: ^0.11.0
+
+  # 权限管理
+  permission_handler: ^11.3.0
+
+  # 谷歌 ML Kit 人脸检测（可用于面部关键点 + AR 贴纸）
+  google_mlkit_face_detection: ^0.12.0
+
+  # MediaPipe Flutter（更精确的 468 点方案，可选）
+  # mediapipe_flutter: ^latest
+
+  # 图片处理（美颜滤镜）
+  image: ^4.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  # 如需本地贴纸资源，放在 assets/stickers/
+  # assets:
+  #   - assets/stickers/
