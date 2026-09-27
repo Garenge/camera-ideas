@@ -1,0 +1,223 @@
+/* ===== 全局重置 & 基础样式 ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0d1117;
+  color: #c9d1d9;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+/* ===== 标题栏 ===== */
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+#header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f0f6fc;
+}
+#status {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.status-on  { background: #1a3a1a; color: #3fb950; }
+.status-off { background: #3a1a1a; color: #f85149; }
+
+/* ===== 画面区域 ===== */
+#viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 60vh;
+  background: #010409;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #21262d;
+}
+
+#video {
+  display: none;
+}
+
+#output {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scaleX(-1);
+  display: none;
+}
+
+#mesh-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scaleX(-1);
+  pointer-events: none;
+  display: none;
+}
+
+/* 占位提示 */
+#placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.placeholder-icon { font-size: 3rem; opacity: 0.4; }
+#placeholder p { opacity: 0.5; font-size: 0.9rem; }
+.placeholder-note { font-size: 0.75rem !important; opacity: 0.3 !important; }
+
+/* 加载遮罩 */
+#loading {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 4, 9, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
+}
+.spinner {
+  width: 40px; height: 40px;
+  border: 3px solid #21262d;
+  border-top-color: #58a6ff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+#loading p { color: #8b949e; font-size: 0.85rem; }
+
+.hidden { display: none !important; }
+
+/* ===== 控制面板 ===== */
+#controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 16px;
+  background: #161b22;
+  border-radius: 12px;
+  border: 1px solid #21262d;
+}
+
+#controls::before {
+  content: "";
+  flex-basis: 0;
+}
+
+.btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn.primary {
+  background: #238636;
+  color: #fff;
+}
+.btn.primary:hover { background: #2ea043; }
+.btn:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+.btn.primary.stop {
+  background: #da3633;
+}
+.btn.primary.stop:hover { background: #f85149; }
+
+.control-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* 开关 */
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+  color: #8b949e;
+}
+.toggle input { accent-color: #58a6ff; }
+
+/* 滑块 */
+.slider-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #8b949e;
+}
+.slider-label input[type="range"] {
+  width: 92px;
+  accent-color: #58a6ff;
+}
+.slider-value {
+  display: inline-block;
+  width: 28px;
+  text-align: right;
+  color: #c9d1d9;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 性能信息 */
+#perf {
+  margin-left: auto;
+  display: flex;
+  gap: 16px;
+  font-size: 0.75rem;
+  color: #484f58;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 底部 */
+#footer {
+  text-align: center;
+  font-size: 0.7rem;
+  color: #30363d;
+  padding: 4px 0;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 600px) {
+  #app { padding: 8px; gap: 8px; }
+  #header h1 { font-size: 1.1rem; }
+  #controls { padding: 8px 12px; flex-direction: column; align-items: stretch; }
+  #perf { margin-left: 0; justify-content: center; }
+  .control-group { justify-content: center; }
+}

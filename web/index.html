@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>摄像头魔法</title>
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+<div id="app">
+  <header id="header">
+    <h1>📸 摄像头魔法</h1>
+    <span id="status" class="status-off">⚫ 就绪</span>
+  </header>
+
+  <div id="viewport">
+    <video id="video" playsinline autoplay muted></video>
+    <canvas id="output"></canvas>
+    <canvas id="mesh-overlay"></canvas>
+    <div id="placeholder">
+      <div class="placeholder-icon">📷</div>
+      <p id="placeholder-text">点击下方按钮启动摄像头</p>
+      <p id="placeholder-detail" class="placeholder-note">模型与特效均在本地运行</p>
+    </div>
+    <div id="loading" class="hidden">
+      <div class="spinner"></div>
+      <p id="loading-text">加载中...</p>
+    </div>
+  </div>
+
+  <div id="controls">
+    <button id="btn-camera" class="btn primary">🎥 启动摄像头</button>
+    <label class="toggle"><input type="checkbox" id="toggle-mesh" checked><span>🕸️ 网格</span></label>
+    <label class="toggle"><input type="checkbox" id="toggle-sticker" checked><span>🤡 贴纸</span></label>
+    <label class="toggle"><input type="checkbox" id="toggle-beauty" checked><span>✨ 美颜</span></label>
+    <label class="toggle"><input type="checkbox" id="toggle-warp" checked><span>🪄 变脸</span></label>
+    <label class="slider-label"><span>🔆 美白</span><input type="range" id="slider-whiten" min="0" max="100" value="25"><span id="val-whiten" class="slider-value">25</span></label>
+    <label class="slider-label"><span>🪞 柔化</span><input type="range" id="slider-smooth" min="0" max="100" value="15"><span id="val-smooth" class="slider-value">15</span></label>
+    <label class="slider-label"><span>🤏 瘦脸</span><input type="range" id="slider-slim" min="0" max="100" value="35"><span id="val-slim" class="slider-value">35</span></label>
+    <label class="slider-label"><span>↕️ 脸长</span><input type="range" id="slider-length" min="-50" max="50" value="0"><span id="val-length" class="slider-value">0</span></label>
+    <div id="perf">
+      <span id="fps">-- FPS</span>
+      <span id="faces">0 张脸</span>
+    </div>
+  </div>
+</div>
+
+<script src="node_modules/@mediapipe/face_mesh/face_mesh.js"></script>
+<script type="module" src="src/app.js?v=5"></script>
+</body>
+</html>

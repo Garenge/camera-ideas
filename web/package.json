@@ -1,0 +1,17 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "node server.cjs",
+    "check": "node --check server.cjs && node --check src/*.js && node --check src/effects/*.js && node --check src/face-warp/*.js",
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mediapipe/face_mesh": "^0.4.1633559619"
+  }
+}
